@@ -17,6 +17,5 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-ruby@v1
-      - run: apt-get install -y ruby-dev
       - run: gem install dpl
       - run: dpl --provider=heroku --app=github-ci-cours --api-key=HEROKU
