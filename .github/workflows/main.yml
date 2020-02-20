@@ -1,0 +1,13 @@
+name: Test And Deploy
+
+on: push
+
+jobs:
+  tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: |
+    make install
+    make test
