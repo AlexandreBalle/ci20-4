@@ -11,10 +11,9 @@ on:
 jobs:
   deploy:
     name: Run Deploy
-    needs: tests
     runs-on: ubuntu-latest
     env:
-      HEROKU: ${{ secret.HEROKU_STAGING_API_KEY }}
+      HEROKU: ${{ secrets.HEROKU_STAGING_API_KEY }}
     steps:
       - uses: actions/setup-ruby@v1
       - run: apt-get update -yq
