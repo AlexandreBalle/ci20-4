@@ -13,9 +13,11 @@ jobs:
     name: Run Deploy
     needs: tests
     runs-on: ubuntu-latest
+    env:
+      HEROKU: ${{ secret.HEROKU_STAGING_API_KEY }}
     steps:
       - uses: actions/setup-ruby@v1
       - run: apt-get update -yq
       - run: apt-get install -y ruby-dev
       - run: gem install dpl
-      - run: dpl --provider=heroku --app=github-ci-cours --api-key=${{ secret.HEROKU_STAGING_API_KEY }}
+      - run: dpl --provider=heroku --app=github-ci-cours --api-key=HEROKU
