@@ -1,0 +1,19 @@
+name: Deploy
+
+on:
+  push:
+    tags:
+      - v*
+  pull_request:
+    tags:
+      - v*
+
+jobs:
+  deploy:
+    name: Run Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+      - run: gem install dpl
+      - run: dpl --provider=heroku --app=github-ci-cours --api-key=${{ secrets.HEROKU_STAGING_API_KEY }}
